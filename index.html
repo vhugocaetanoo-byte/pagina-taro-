@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- COPY v1.1 – NON APPROVATA -->
+<!-- COPY v1.4 -->
 <html lang="it">
 <head>
   <meta charset="utf-8">
@@ -148,52 +148,54 @@
       padding-left: 1rem;
     }
 
-    /* Product mockup placeholder (CSS only — replace with a real image later) */
+    /* Hero product mockup (v2) */
     .mockup {
       position: relative;
-      min-height: 280px;
-      display: grid;
-      place-items: center;
+      margin: 0;
     }
-    .mockup-cluster {
-      position: relative;
-      width: min(100%, 420px);
-      aspect-ratio: 1.05;
-    }
-    .tablet {
-      position: absolute;
-      width: 38%;
-      aspect-ratio: 3 / 3.8;
-      background: linear-gradient(180deg, #f8f3e8, #efe6d3);
-      border: 3px solid #2a2a28;
-      border-radius: 10px;
-      box-shadow: 0 14px 30px rgba(28, 24, 20, 0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0.5rem;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 0.62rem;
-      line-height: 1.25;
-      color: var(--pine);
-      letter-spacing: 0.02em;
-    }
-    .tablet:nth-child(1) { left: 31%; top: 0; width: 42%; z-index: 5; }
-    .tablet:nth-child(2) { left: 4%; top: 14%; transform: rotate(-14deg); z-index: 2; }
-    .tablet:nth-child(3) { right: 2%; top: 12%; left: auto; transform: rotate(12deg); z-index: 3; }
-    .tablet:nth-child(4) { left: 8%; bottom: 8%; top: auto; transform: rotate(-8deg); z-index: 4; }
-    .tablet:nth-child(5) { right: 8%; bottom: 6%; left: auto; top: auto; transform: rotate(8deg); z-index: 4; }
-    .tablet:nth-child(6) { left: 34%; bottom: -2%; top: auto; width: 36%; transform: rotate(-2deg); z-index: 1; }
     .mockup img {
       width: 100%;
-      border-radius: 8px;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 16px 40px rgba(28, 24, 20, 0.22);
     }
     .mockup-note {
-      margin-top: 0.75rem;
-      font-size: 0.7rem;
+      margin-top: 0.7rem;
+      font-size: 0.75rem;
       color: var(--muted);
       text-align: center;
+    }
+
+    /* Covers in Cosa ricevi / bonus */
+    .ricevi-ebook, .star-bonus-inner, .bonus-card {
+      display: grid;
+      gap: 1rem;
+      align-items: start;
+    }
+    .ricevi-ebook { grid-template-columns: 110px 1fr; }
+    .star-bonus-inner { grid-template-columns: 1fr; }
+    .star-bonus-media {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      align-items: start;
+    }
+    .bonus-card { grid-template-columns: 88px 1fr; }
+    .capa, .star-bonus-media img, .bonus-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 6px 16px rgba(28, 24, 20, 0.14);
+    }
+    @media (min-width: 720px) {
+      .ricevi-ebook { grid-template-columns: 170px 1fr; }
+      .star-bonus-inner { grid-template-columns: minmax(220px, 38%) 1fr; gap: 1.35rem; }
+    }
+    @media (min-width: 960px) {
+      .bonus-card { grid-template-columns: 1fr; }
+      .bonus-card img { width: 58%; max-width: 180px; }
     }
 
     /* Price / offer strip */
@@ -600,7 +602,7 @@
   
     /* Overflow safety (mobile) */
     html, body { max-width: 100%; overflow-x: hidden; }
-    img, svg, .mockup, .mockup-cluster, .chat, .tablet { max-width: 100%; }
+    img, svg, .mockup, .chat { max-width: 100%; }
     h1, h2, h3, p, a, li, blockquote, .kicker, .fascia, .prezzo, .cta {
       overflow-wrap: break-word;
       word-wrap: break-word;
@@ -620,9 +622,11 @@
       text-align: center;
       font-size: 0.8rem;
       color: var(--muted);
-      padding: 0.7rem 1.15rem 1.1rem;
+      padding: 0.7rem 1.15rem 1.15rem;
       background: var(--paper);
     }
+    .cta-micro p + p { margin-top: 0.35rem; }
+    .cta-invito { font-style: italic; }
     .prezzo-note {
       margin-top: 0.45rem;
       font-size: 0.9rem;
@@ -708,10 +712,9 @@
     .per-chi-card.no li::before { content: "✕"; position: absolute; left: 0; color: #8f2e1f; font-weight: 700; }
     @media (min-width: 720px) {
       .per-chi-grid { grid-template-columns: 1fr 1fr; }
-      .ricevi-grid { grid-template-columns: 1fr 1fr; }
     }
 
-    /* Badge garanzia: durata ancora placeholder, deve poter andare a capo */
+    /* Badge garanzia: 15 giorni */
     .badge-7 {
       width: 6.5rem;
       height: 6.5rem;
@@ -733,12 +736,12 @@
 <body>
   <a class="skip" href="#contenuto">Vai al contenuto</a>
 
-  <!-- 1. Barra offerta. Countdown giornaliero fino alla prossima mezzanotte (Europe/Rome),
-       con etichetta neutra: nessun claim su scadenza di prezzo, sconto o offerta. -->
+  <!-- 1. Barra offerta. Countdown giornaliero fino alla prossima mezzanotte (Europe/Rome).
+       Testi da urgencia_contador_diario.md: invito a iniziare oggi, senza claim su scadenza di prezzo, sconto o bonus. -->
   <div class="topbar" role="region" aria-label="Offerta">
-    <p class="topbar-text">Ebook in PDF + mazzo di 78 carte da stampare · Download immediato</p>
+    <p class="topbar-text">La tua prima stesa può essere stasera. Inizia oggi · Download immediato in PDF</p>
     <div class="countdown" id="countdown">
-      <span class="countdown-label">Inizia oggi · Download immediato</span>
+      <span class="countdown-label">Inizia oggi: la giornata finisce tra</span>
       <div class="countdown-units" aria-hidden="true">
         <div class="unit"><b data-unit="d">00</b><span>giorni</span></div>
         <div class="unit"><b data-unit="h">00</b><span>ore</span></div>
@@ -759,19 +762,8 @@
           <p class="sub">Una guida pratica in PDF, con il mazzo completo da stampare, per capire come sono costruiti i tarocchi e iniziare a leggerli da zero, con un metodo semplice: 4 parole, 4 semi, una mappa.</p>
         </div>
         <figure class="mockup">
-          <!--
-            Quando il mockup è pronto, sostituisci il cluster CSS con:
-            <img src="{{MOCKUP_SRC}}" alt="{{MOCKUP_ALT}}" width="640" height="560" loading="lazy">
-          -->
-          <div class="mockup-cluster" aria-hidden="true">
-            <div class="tablet">L'Arte dei Tarocchi</div>
-            <div class="tablet">Mazzo da 78 carte</div>
-            <div class="tablet">Le 78 carte spiegate</div>
-            <div class="tablet">Spazio di lettura</div>
-            <div class="tablet">50 domande</div>
-            <div class="tablet">Stese passo dopo passo</div>
-          </div>
-          <figcaption class="mockup-note">{{MOCKUP_ALT}}</figcaption>
+          <img src="assets/mockup-kit-completo.webp" alt="Il kit L'Arte dei Tarocchi: ebook, Bonus Stella e i 5 bonus, con carte da stampare" width="1200" height="675" fetchpriority="high">
+          <figcaption class="mockup-note">L'Arte dei Tarocchi — Guida pratica per principianti, con il mazzo da stampare e i bonus</figcaption>
         </figure>
       </div>
     </section>
@@ -780,7 +772,7 @@
     <section class="offerta" id="offerta" aria-label="Offerta">
       <p class="fascia">Tutto quello che ti serve per iniziare, in un unico download</p>
       <div class="prezzi">
-        <p class="prezzo-note">Ebook <em>L'Arte dei Tarocchi</em> + mazzo di 78 carte da stampare + 5 bonus</p>
+        <p class="prezzo-note">Ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (65 pagine) + Bonus Stella: mazzo di 78 carte da stampare + 5 bonus</p>
         <div class="prezzo-box">
           <!-- Prezzo approvato: 19,90 € (IVA inclusa). Nessun prezzo barrato / "risparmi" (Omnibus: niente sconto senza storico reale). -->
           <span class="prezzo">19,90 €</span>
@@ -789,9 +781,13 @@
       </div>
       <div class="cta-wrap">
         <!-- {{CHECKOUT_URL}} : sostituire l'href di test qui sotto con l'URL reale del checkout Hotmart. -->
-        <a class="cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Voglio iniziare</a>
+        <a class="cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Voglio iniziare: 19,90 €</a>
       </div>
-      <p class="cta-micro">Pagamento sicuro · PDF scaricabile subito · 15 giorni</p>
+      <div class="cta-micro">
+        <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
+        <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
+        <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
+      </div>
     </section>
 
     <!-- 4.2 Apertura (blocco della copy senza sezione corrispondente nello scheletro) -->
@@ -803,7 +799,7 @@
       </div>
     </section>
 
-    <!-- 4.3 Obiezioni — titoli e intro della copy v1.1 -->
+    <!-- 4.3 Obiezioni — titoli e intro della copy v1.4 -->
     <section class="problema">
       <div class="wrap">
         <h2>La curiosità c'è. Allora cosa ti blocca?</h2>
@@ -935,7 +931,7 @@
       </div>
     </section>
 
-    <!-- 4.5b In breve, 3 punti (copy v1.1) -->
+    <!-- 4.5b In breve, 3 punti (copy v1.4) -->
     <section class="sintesi">
       <div class="wrap">
         <h2>In breve, ecco cosa ti porti a casa</h2>
@@ -961,13 +957,16 @@
       <div class="wrap">
         <h2>Cosa ricevi</h2>
         <div class="ricevi-grid">
-          <article class="ricevi-card">
-            <h3>📘 L'ebook <em>L'Arte dei Tarocchi</em> (PDF)</h3>
-            <p>il metodo passo dopo passo, dalle basi alla tua prima stesa.</p>
+          <article class="ricevi-card ricevi-ebook">
+            <img class="capa" src="assets/capa-ebook-principale.webp" alt="Copertina dell'ebook L'Arte dei Tarocchi — Guida pratica per principianti" width="1166" height="1654" loading="lazy">
+            <div>
+              <h3>📘 L'ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (PDF, 65 pagine)</h3>
+              <p>il metodo delle 4 parole passo dopo passo, dalle basi alla tua prima stesa, con un esercizio alla fine di ogni capitolo e un piano di pratica di 21 giorni.</p>
+            </div>
           </article>
           <article class="ricevi-card">
             <h3>⚡ Accesso immediato</h3>
-            <p>ricevi tutto via email subito dopo il pagamento. Leggi da telefono, tablet o computer.</p>
+            <p>subito dopo il pagamento ricevi via email il link per scaricare tutto. Leggi da telefono, tablet o computer.</p>
           </article>
         </div>
       </div>
@@ -976,41 +975,64 @@
     <section class="bonus">
       <div class="wrap">
         <article class="star-bonus">
-          <span class="etichetta">{{STAR_BONUS_ETICHETTA}}</span>
-          <h2>Il mazzo completo di 78 carte da stampare</h2>
-          <p>22 Arcani Maggiori + 56 Arcani Minori, file pronto per la stampa a casa o in copisteria. Non devi comprare nessun mazzo per iniziare.</p>
-          <ul>
-            <li>22 Arcani Maggiori + 56 Arcani Minori</li>
-            <li>File pronto per la stampa a casa o in copisteria</li>
-            <li>Non devi comprare nessun mazzo per iniziare.</li>
-          </ul>
+          <span class="etichetta">Bonus Stella</span>
+          <div class="star-bonus-inner">
+            <div class="star-bonus-media">
+              <img src="assets/capa-bonus-stella.webp" alt="Copertina del Bonus Stella: il mazzo di 78 carte da stampare" width="1200" height="1697" loading="lazy">
+              <img src="assets/mockup-mazzo-stampato.webp" alt="Mazzo di 78 carte da stampare, con illustrazioni originali del 1909 di Pamela Colman Smith e nomi in italiano" width="1200" height="1200" loading="lazy">
+            </div>
+            <div>
+              <h2>Bonus Stella: Il Mazzo di 78 Carte da stampare</h2>
+              <p>PDF A4, 28 pagine: 22 Arcani Maggiori + 56 Arcani Minori, con le illustrazioni originali del 1909 di Pamela Colman Smith, con i nomi in italiano. Non devi comprare nessun mazzo per iniziare.</p>
+              <ul>
+                <li>6 carte per foglio, con segni di taglio</li>
+                <li>Dorso da stampare fronte-retro</li>
+                <li>Pronto per la stampa a casa o in copisteria</li>
+              </ul>
+            </div>
+          </div>
         </article>
-        <h2 class="bonus-heading">Inclusi senza costi aggiuntivi: 5 bonus</h2>
+        <h2 class="bonus-heading">Inclusi senza costi aggiuntivi: il Bonus Stella + 5 bonus</h2>
         <div class="bonus-grid">
           <article class="bonus-card">
-            <p class="n">Bonus 1</p>
-            <h3>Le 78 carte spiegate una per una</h3>
-            <p>simboli e significati, dritte e rovesciate. Il tuo dizionario da consultare quando vuoi.</p>
+            <img src="assets/capa-bonus1-78-carte-spiegate.webp" alt="Copertina del bonus Le 78 Carte Spiegate" width="1166" height="1654" loading="lazy">
+            <div>
+              <p class="n">Bonus 1</p>
+              <h3>Le 78 Carte Spiegate (87 pagine)</h3>
+              <p>una carta per pagina, con parole chiave, simboli da osservare, significato dritto e rovesciato, spunti per amore e lavoro e un consiglio in una frase. Il tuo dizionario da consultare quando vuoi.</p>
+            </div>
           </article>
           <article class="bonus-card">
-            <p class="n">Bonus 2</p>
-            <h3>Preparare il tuo spazio di lettura</h3>
-            <p>i 4 elementi, come predisporre il tavolo, un piccolo rituale per iniziare con calma e intenzione e come prenderti cura del tuo mazzo.</p>
+            <img src="assets/capa-bonus2-spazio-di-lettura.webp" alt="Copertina del bonus Come Preparare lo Spazio di Lettura" width="1166" height="1654" loading="lazy">
+            <div>
+              <p class="n">Bonus 2</p>
+              <h3>Come Preparare lo Spazio di Lettura (8 pagine)</h3>
+              <p>i 4 elementi, come predisporre il tavolo, un piccolo rituale di 5 minuti per iniziare con calma e intenzione e come prenderti cura del tuo mazzo.</p>
+            </div>
           </article>
           <article class="bonus-card">
-            <p class="n">Bonus 3</p>
-            <h3>50 domande da fare ai tarocchi</h3>
-            <p>quando non sai come iniziare una stesa, parti da qui. Domande aperte, che aiutano a riflettere.</p>
+            <img src="assets/capa-bonus3-50-domande.webp" alt="Copertina del bonus 50 Domande da Fare ai Tarocchi" width="1166" height="1654" loading="lazy">
+            <div>
+              <p class="n">Bonus 3</p>
+              <h3>50 Domande da Fare ai Tarocchi (9 pagine)</h3>
+              <p>quando non sai come iniziare una stesa, parti da qui. Domande aperte, divise per temi, che aiutano a riflettere.</p>
+            </div>
           </article>
           <article class="bonus-card">
-            <p class="n">Bonus 4</p>
-            <h3>Le stese passo dopo passo (da stampare)</h3>
-            <p>Sì/No, tre carte, la stesa dell'amore e la Croce Celtica, con il significato di ogni posizione.</p>
+            <img src="assets/capa-bonus4-stese.webp" alt="Copertina del bonus Stese Passo dopo Passo" width="1200" height="1697" loading="lazy">
+            <div>
+              <p class="n">Bonus 4</p>
+              <h3>Stese Passo dopo Passo (16 pagine, da stampare)</h3>
+              <p>6 stese, dalla più semplice alla più completa: carta del giorno, Sì/No (da leggere come un termometro, non come una sentenza), due stese a tre carte, la stesa dell'amore e la Croce Celtica. Per ognuna: schema, significato di ogni posizione e un foglio di lettura da compilare.</p>
+            </div>
           </article>
           <article class="bonus-card">
-            <p class="n">Bonus 5</p>
-            <h3>Il diario dei tarocchi da stampare</h3>
-            <p>il tuo spazio per annotare stese, intuizioni e simboli, e vedere come cresce la tua lettura.</p>
+            <img src="assets/capa-bonus5-diario.webp" alt="Copertina del bonus Diario dei Tarocchi" width="1200" height="1697" loading="lazy">
+            <div>
+              <p class="n">Bonus 5</p>
+              <h3>Diario dei Tarocchi (14 pagine, da stampare)</h3>
+              <p>carta del giorno per 4 settimane, fogli di lettura, una pagina per simboli e intuizioni e la checklist delle 78 carte, per vedere come cresce la tua lettura.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -1109,14 +1131,18 @@
       </div>
     </section>
 
-    <!-- 4.10 CTA intermedia -->
+    <!-- 4.10 CTA intermedia (copy v1.4) -->
     <section class="cta-block">
       <div class="wrap">
         <h2>Tutto quello che ti serve per iniziare, in un unico download</h2>
-        <p class="intro" style="margin-inline:auto;">Ebook <em>L'Arte dei Tarocchi</em> + mazzo di 78 carte da stampare + 5 bonus</p>
-        <!-- {{CHECKOUT_URL}} : sostituire l'href di test qui sotto con l'URL reale del checkout Hotmart. -->
+        <p class="intro" style="margin-inline:auto;">Ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (65 pagine) + Bonus Stella: mazzo di 78 carte da stampare + 5 bonus</p>
+        <!-- {CHECKOUT_URL} -->
         <a class="cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Sì, voglio iniziare a leggere i tarocchi</a>
-        <p class="cta-micro">Pagamento sicuro · PDF scaricabile subito · 15 giorni</p>
+        <div class="cta-micro">
+          <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
+          <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
+          <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
+        </div>
       </div>
     </section>
 
@@ -1135,7 +1161,7 @@
       </div>
     </section>
 
-    <!-- 4.12 FAQ (copy v1.1): titolo, intro, domanda sul mazzo aggiornata, senza riferimenti a stile/origine. -->
+    <!-- 4.12 FAQ (copy v1.4). -->
     <section class="faq">
       <div class="wrap">
         <p class="kicker">Prima di iniziare, chiariamo ogni dubbio.</p>
@@ -1156,7 +1182,7 @@
           </details>
           <details>
             <summary>Quanto tempo serve?</summary>
-            <p class="risposta">Vai al tuo ritmo. La guida è pensata per farti provare una prima stesa semplice già nei primi giorni.</p>
+            <p class="risposta">Vai al tuo ritmo. La guida ti accompagna nella tua prima lettura semplice, passo dopo passo, e ti propone un piano di pratica di 21 giorni per prendere confidenza.</p>
           </details>
           <details>
             <summary>Devo comprare un mazzo?</summary>
@@ -1164,7 +1190,7 @@
           </details>
           <details>
             <summary>Posso usare un altro mazzo che ho già?</summary>
-            <p class="risposta">Sì, se è un mazzo da 78 carte con Arcani Maggiori e Minori: semi, numeri e figure funzionano allo stesso modo. Le immagini di riferimento della guida sono quelle del mazzo incluso, quindi qualche dettaglio può cambiare da mazzo a mazzo.</p>
+            <p class="risposta">Sì, se è un mazzo da 78 carte con Arcani Maggiori e Minori: semi, numeri e figure funzionano allo stesso modo. Le immagini di riferimento della guida sono quelle del mazzo incluso (le illustrazioni originali del 1909 di Pamela Colman Smith, con i nomi in italiano), quindi con altri mazzi (per esempio i marsigliesi) qualche dettaglio può cambiare.</p>
           </details>
           <details>
             <summary>Posso fare le carte a me stessa/o?</summary>
@@ -1190,11 +1216,11 @@
       </div>
     </section>
 
-    <!-- 4.13 Offerta ripetuta / CTA finale. Prezzo: 19,90 € (IVA inclusa). -->
+    <!-- 4.13 Offerta ripetuta / CTA finale (copy v1.4). Prezzo: 19,90 € (IVA inclusa). -->
     <section class="offerta offerta-ripetuta" aria-label="Offerta">
       <p class="fascia">Il mazzo ha una mappa. È ora di vederla.</p>
       <div class="prezzi">
-        <p class="prezzo-note">Ebook <em>L'Arte dei Tarocchi</em> + mazzo di 78 carte da stampare + 5 bonus</p>
+        <p class="prezzo-note">Ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (65 pagine) + Bonus Stella: mazzo di 78 carte da stampare + 5 bonus</p>
         <div class="prezzo-box">
           <!-- Stesso prezzo del blocco principale: 19,90 € (IVA inclusa). Nessun prezzo barrato. -->
           <span class="prezzo">19,90 €</span>
@@ -1203,9 +1229,13 @@
       </div>
       <div class="cta-wrap">
         <!-- {{CHECKOUT_URL}} : sostituire l'href di test qui sotto con l'URL reale del checkout Hotmart. -->
-        <a class="cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Scarica L'Arte dei Tarocchi</a>
+        <a class="cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Scarica L'Arte dei Tarocchi: 19,90 €</a>
       </div>
-      <p class="cta-micro">Pagamento sicuro · PDF scaricabile subito · 15 giorni</p>
+      <div class="cta-micro">
+        <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
+        <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
+        <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
+      </div>
     </section>
   </main>
 
