@@ -5,11 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Una guida pratica in PDF, con il mazzo completo da stampare, per capire come sono costruiti i tarocchi e iniziare a leggerli da zero, con un metodo semplice: 4 parole, 4 semi, una mappa.">
-  <meta name="theme-color" content="#24352c">
+  <meta name="theme-color" content="#1B1230">
   <title>L'Arte dei Tarocchi — Guida pratica per principianti</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!--
     Tracking Kitaulas (sostituisce il Meta Pixel base sulla pagina).
     pixel.js + utm.js: UTMs/fbclid e, sui link pay.hotmart.com, il parametro sck
@@ -19,719 +19,216 @@
   <script src="https://utm.kitaulasprontas.site/pixel.js" data-key="9qGsQswDfbhHxaIrAzM2lmo2" data-checkout-hosts="pay.hotmart.com" defer></script>
   <script src="https://utm.kitaulasprontas.site/utm.js" data-checkout-hosts="pay.hotmart.com" defer></script>
 <style>
-    :root {
-      --ink: #1c1814;
-      --pine: #24352c;
-      --pine-deep: #1a2620;
-      --gold: #c4a046;
-      --gold-dark: #8f732c;
-      --ivory: #f5f0e6;
-      --paper: #fcfaf5;
-      --muted: #5a554c;
-      --line: #e2dacb;
-      --card: #fffcf7;
-      --quote: #7a6a3a;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--ivory);
-      color: var(--ink);
-      line-height: 1.65;
-      font-size: 1rem;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; height: auto; display: block; }
-    a { color: inherit; }
-    h1, h2, h3, .serif {
-      font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
-      font-weight: 500;
-      line-height: 1.18;
-      letter-spacing: -0.01em;
-    }
-    .skip {
-      position: absolute;
-      left: -999px;
-      top: 0;
-      background: var(--pine);
-      color: #fff;
-      padding: 0.5rem 1rem;
-      z-index: 100;
-    }
-    .skip:focus { left: 0; }
-    .wrap {
-      width: min(1120px, calc(100% - 2.5rem));
-      margin-inline: auto;
-    }
+:root{
+  --ink:#1B1230; --ink2:#5C5470; --orange:#D4A017; --orange2:#9A7420; --sand:#F8F1E3; --sky:#EFEAF6;
+  --green:#18A058; --line:#E4DCE8; --amber:#E8C56B; --radius:22px;
+  --soft:#D4CCE2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.center{text-align:center}
+section{padding:68px 0}
+h1,h2,h3{letter-spacing:-.035em;line-height:1.08;font-weight:900}
+h1{font-size:clamp(34px,6.2vw,56px)}
+h2{font-size:clamp(28px,4.6vw,42px);margin-bottom:14px}
+h3{font-size:20px;letter-spacing:-.02em}
+mark{background:linear-gradient(transparent 58%,var(--amber) 58%);color:inherit;padding:0 .1em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.dark mark,.finalcta mark{color:#fff;background:linear-gradient(transparent 58%,rgba(212,160,23,.7) 58%)}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--ink2);max-width:720px;margin:0 auto}
+.lead b, .lead strong{color:var(--ink)}
+.skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip:focus{position:static;width:auto;height:auto;padding:8px 16px;background:var(--ink);color:#fff;z-index:100}
 
-    /* Top offer bar */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: var(--pine);
-      color: #f3edd9;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.65rem 1.25rem;
-      padding: 0.7rem 1rem;
-      text-align: center;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .topbar-text { font-weight: 600; }
-    .countdown {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .countdown-label { letter-spacing: 0.06em; opacity: 0.9; }
-    .countdown-units {
-      display: flex;
-      gap: 0.35rem;
-    }
-    .unit {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(243, 237, 217, 0.25);
-      min-width: 2.5rem;
-      padding: 0.2rem 0.3rem 0.15rem;
-      border-radius: 3px;
-    }
-    .unit b {
-      display: block;
-      font-variant-numeric: tabular-nums;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-    }
-    .unit span {
-      display: block;
-      font-size: 0.55rem;
-      letter-spacing: 0.1em;
-      opacity: 0.75;
-    }
+.pattern{
+  background-color:var(--sand);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240' fill='none' stroke='%23D4A017' stroke-opacity='.2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M40 42 l5 12 13 1.5 -10 8.5 3.5 12.5 -11.5 -7 -11.5 7 3.5 -12.5 -10 -8.5 13 -1.5 z'/%3E%3Cpath d='M188 40 a18 18 0 1 0 2 28 a14 14 0 1 1 -2 -28'/%3E%3Crect x='98' y='148' width='32' height='46' rx='3'/%3E%3Cpath d='M114 162 l4 9 10 1.2 -8 6.5 2.5 9.5 -8.5 -5.5 -8.5 5.5 2.5 -9.5 -8 -6.5 10 -1.2 z'/%3E%3Cpath d='M200 188 l3.5 9 9.5 1.2 -7.5 6 2.2 9 -7.7 -5 -7.7 5 2.2 -9 -7.5 -6 9.5 -1.2 z'/%3E%3C/svg%3E"),
+    linear-gradient(rgba(27,18,48,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(27,18,48,.05) 1px,transparent 1px);
+  background-size:240px 240px,26px 26px,26px 26px;
+}
+.tint{background:var(--sky)}
+.dark{background:var(--ink);color:#fff}
+.dark .lead{color:var(--soft)}
+.stripe{height:14px;background:repeating-linear-gradient(-45deg,var(--orange) 0 18px,var(--ink) 18px 36px)}
 
-    /* Hero */
-    .hero {
-      position: relative;
-      padding: 2.75rem 0 2.25rem;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse 80% 50% at 80% 30%, rgba(196, 160, 70, 0.12), transparent 55%),
-        var(--ivory);
-    }
-    .hero-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .kicker {
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 0.85rem;
-      text-wrap: balance;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 8vw, 3.35rem);
-      margin-bottom: 1.15rem;
-    }
-    .hero .sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 36em;
-      border-left: 2px solid var(--gold);
-      padding-left: 1rem;
-    }
+.pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--amber);color:var(--orange2);font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:7px 15px;border-radius:99px;margin-bottom:18px;text-wrap:balance}
+.pill.blue{border-color:var(--line);color:var(--ink);background:var(--sky)}
+.pill.dk{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#fff}
 
-    /* Hero product mockup (v2) */
-    .mockup {
-      position: relative;
-      margin: 0;
-    }
-    .mockup img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 10px;
-      box-shadow: 0 16px 40px rgba(28, 24, 20, 0.22);
-    }
-    .mockup-note {
-      margin-top: 0.7rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-align: center;
-    }
+.btn{display:inline-block;text-align:center;text-decoration:none;text-transform:uppercase;font-weight:900;letter-spacing:.01em;font-size:17px;color:var(--ink);padding:18px 36px;border-radius:99px;background:linear-gradient(#F0D078,#D4A017);box-shadow:0 5px 0 var(--orange2),0 16px 30px rgba(212,160,23,.32);transition:transform .15s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--orange2)}
+.btn.block{display:block}
+a.cta, a.btn{white-space:normal;overflow-wrap:break-word}
 
-    /* Covers in Cosa ricevi / bonus */
-    .ricevi-ebook, .star-bonus-inner, .bonus-card {
-      display: grid;
-      gap: 1rem;
-      align-items: start;
-    }
-    .ricevi-ebook { grid-template-columns: 110px 1fr; }
-    .star-bonus-inner { grid-template-columns: 1fr; }
-    .star-bonus-media {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.65rem;
-      align-items: start;
-    }
-    .bonus-card { grid-template-columns: 88px 1fr; }
-    .capa, .star-bonus-media img, .bonus-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 6px;
-      box-shadow: 0 6px 16px rgba(28, 24, 20, 0.14);
-    }
-    @media (min-width: 720px) {
-      .ricevi-ebook { grid-template-columns: 170px 1fr; }
-      .star-bonus-inner { grid-template-columns: minmax(220px, 38%) 1fr; gap: 1.35rem; }
-    }
-    @media (min-width: 960px) {
-      .bonus-card { grid-template-columns: 1fr; }
-      .bonus-card img { width: 58%; max-width: 180px; }
-    }
+.topbar{background:var(--ink);color:#fff;text-align:center;font-size:13.5px;font-weight:700;padding:8px 14px 10px}
+.topbar-text{margin-bottom:6px;letter-spacing:.01em}
+.countdown{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 12px}
+.countdown-label{font-size:12.5px;font-weight:700;opacity:.9}
+.countdown-units{display:flex;gap:6px}
+.unit{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);min-width:2.55rem;padding:4px 6px 3px;border-radius:8px}
+.unit b{display:block;font-variant-numeric:tabular-nums;font-size:15px;letter-spacing:.02em;font-weight:800}
+.unit span{display:block;font-size:9px;letter-spacing:.08em;text-transform:uppercase;opacity:.75;font-weight:700}
 
-    /* Price / offer strip */
-    .fascia {
-      background: var(--pine);
-      color: #f3edd9;
-      text-align: center;
-      padding: 0.7rem 1rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-    .prezzi {
-      background: var(--paper);
-      text-align: center;
-      padding: 1.6rem 1.25rem 1.35rem;
-    }
-    .prezzo-box { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 0.65rem 0.9rem; }
-    .prezzo {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 2.75rem;
-      font-weight: 600;
-      line-height: 1;
-      color: var(--ink);
-    }
-    .cta-row {
-      background: var(--gold);
-      text-align: center;
-    }
-    a.cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 3.25rem;
-      padding: 0.9rem 1.5rem;
-      background: var(--gold);
-      color: var(--pine-deep);
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      border: 0;
-      cursor: pointer;
-      transition: background 0.15s ease, transform 0.15s ease;
-    }
-    a.cta:hover { background: #d4b056; }
-    a.cta:focus-visible {
-      outline: 3px solid var(--pine);
-      outline-offset: -3px;
-    }
-    .cta-wrap {
-      padding: 0;
-      background: var(--gold);
-    }
-    .cta-block {
-      padding: 2.25rem 0;
-      text-align: center;
-      background: var(--paper);
-    }
-    .cta-block .cta {
-      width: min(100%, 420px);
-      border-radius: 2px;
-    }
-    .cta-block h2 { margin-bottom: 1.25rem; font-size: 1.85rem; }
+.hero{padding:32px 0 48px;text-align:center}
+.hero h1{max-width:920px;margin:0 auto 18px}
+.hero .sub{max-width:680px;margin:0 auto 28px;font-size:clamp(17px,2.2vw,20px);color:var(--ink2)}
+.hero .sub b, .hero .sub strong{color:var(--ink)}
+.frame{max-width:680px;margin:0 auto 16px;border:5px solid var(--orange);border-radius:30px;overflow:hidden;box-shadow:0 24px 50px rgba(27,18,48,.22);background:#fff}
+.frame img{width:100%;height:auto;display:block}
+.mockup-note{margin:8px auto 18px;max-width:680px;font-size:13.5px;color:var(--ink2);text-align:center}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:26px;font-weight:700;font-size:15px;color:var(--ink2)}
+.hero .pay{margin-top:16px}
 
-    /* Problem / objections */
-    .problema {
-      padding: 3.25rem 0;
-    }
-    .problema h2, .risultati h2, .sintesi h2, .bonus h2, .testimonianze h2, .garanzia h2, .faq h2 {
-      font-size: clamp(1.7rem, 5vw, 2.4rem);
-      margin-bottom: 0.75rem;
-    }
-    .intro {
-      color: var(--muted);
-      margin-bottom: 1.75rem;
-      max-width: 38em;
-    }
-    .obiezioni {
-      display: grid;
-      gap: 1.1rem;
-    }
-    .obiezione {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1.25rem 1.2rem 1.3rem;
-    }
-    .obiezione blockquote {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-style: italic;
-      font-size: 1.2rem;
-      color: var(--quote);
-      margin-bottom: 0.55rem;
-    }
-    .obiezione h3 { font-size: 1.25rem; margin-bottom: 0.35rem; }
-    .obiezione p { color: var(--muted); font-size: 0.95rem; }
+.apertura p{font-size:clamp(17px,2.2vw,20px);color:var(--ink);max-width:720px;margin:0 auto 1em}
+.apertura p:last-child{margin-bottom:0}
 
-    .problema-reale {
-      background: var(--pine-deep);
-      color: #f3edd9;
-      padding: 2.75rem 0;
-    }
-    .problema-reale .etichetta {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.65rem;
-    }
-    .problema-reale h2 {
-      font-size: clamp(1.7rem, 5vw, 2.4rem);
-      margin-bottom: 0.9rem;
-      color: #f3edd9;
-    }
-    .problema-reale p {
-      font-size: 1.05rem;
-      line-height: 1.65;
-      max-width: 40em;
-      margin-bottom: 0.85rem;
-      color: #e8e0d0;
-    }
-    .problema-reale p.chiusura {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 1.4rem;
-      color: #f3edd9;
-      margin-bottom: 0;
-    }
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:900px;margin:34px auto 0;text-align:left}
+.card{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:0 8px 20px rgba(27,18,48,.07)}
+.card .ic{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--sand);font-size:20px}
+.card h3{font-size:16.5px;margin:2px 0 6px}
+.card blockquote{font-weight:700;font-size:14.5px;color:var(--orange2);margin-bottom:4px;font-style:normal}
+.card p{color:var(--ink2);font-size:14.5px;font-weight:500;line-height:1.45}
+.card.last{grid-column:1/-1;}
 
-    /* Results I–V */
-    .risultati { padding: 3.25rem 0; background: var(--paper); }
-    .risultato-lista { display: grid; gap: 1.35rem; margin-top: 1.5rem; }
-    .risultato {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.9rem 1.1rem;
-      padding-bottom: 1.35rem;
-      border-bottom: 1px solid var(--line);
-    }
-    .risultato:last-child { border-bottom: 0; padding-bottom: 0; }
-    .num {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 1.65rem;
-      color: var(--gold-dark);
-      min-width: 1.6rem;
-    }
-    .risultato h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
-    .risultato p { color: var(--muted); }
+.parole{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:900px;margin:34px auto 0;text-align:left}
+.parola{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:20px 18px;box-shadow:0 10px 24px rgba(27,18,48,.08)}
+.parola h3{font-size:18px;margin-bottom:6px}
+.parola p{color:var(--ink2);font-weight:600;font-size:15px}
+.segue{max-width:720px;margin:16px auto 0;color:var(--ink);font-size:17px;text-align:left}
 
-    /* Short summary */
-    .sintesi { padding: 3.25rem 0; }
-    .sintesi-grid {
-      display: grid;
-      gap: 1.1rem;
-      margin-top: 1.5rem;
-    }
-    .sintesi-card {
-      background: var(--card);
-      border-top: 3px solid var(--gold);
-      padding: 1.35rem 1.2rem 1.4rem;
-      box-shadow: 0 1px 0 var(--line);
-    }
-    .sintesi-card h3 { font-size: 1.45rem; margin-bottom: 0.4rem; }
-    .sintesi-card p { color: var(--muted); }
+.risultati-lista{display:grid;gap:12px;max-width:780px;margin:0 auto;text-align:left}
+.risultato{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:0 8px 20px rgba(27,18,48,.07)}
+.risultato .num{flex:none;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--amber);font-weight:900;font-size:16px;display:grid;place-items:center}
+.risultato h3{font-size:18px;margin-bottom:4px}
+.risultato p{color:var(--ink2);font-size:15.5px}
 
-    /* Star-Bonus + 5 bonuses */
-    .bonus { padding: 3.25rem 0; background: var(--paper); }
-    .star-bonus {
-      background: linear-gradient(180deg, #fbf6ea, #f3ead3);
-      border: 1px solid #d8c58a;
-      border-radius: 10px;
-      padding: 1.5rem 1.25rem 1.6rem;
-      margin-bottom: 1.5rem;
-    }
-    .star-bonus .etichetta {
-      display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      font-weight: 700;
-      margin-bottom: 0.45rem;
-    }
-    .star-bonus h3 { font-size: 1.7rem; margin-bottom: 0.5rem; }
-    .star-bonus > p { color: var(--muted); margin-bottom: 0.85rem; }
-    .star-bonus ul { padding-left: 1.15rem; color: var(--ink); }
-    .star-bonus li { margin: 0.3rem 0; }
-    .bonus-grid {
-      display: grid;
-      gap: 1rem;
-    }
-    .bonus-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1.2rem 1.15rem 1.25rem;
-    }
-    .bonus-card .n {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 0.35rem;
-    }
-    .bonus-card h3 { font-size: 1.25rem; margin-bottom: 0.35rem; }
-    .bonus-card p { color: var(--muted); font-size: 0.95rem; }
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;text-align:left}
+.step{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:24px 22px;box-shadow:0 10px 24px rgba(27,18,48,.08)}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--amber);font-weight:900;font-size:20px;display:grid;place-items:center;margin-bottom:14px}
+.step p{color:var(--ink2);margin-top:6px;font-size:16px}
 
-    /* Testimonials (chat-bubble placeholders) */
-    .testimonianze { padding: 3.25rem 0; }
-    .avviso-legale {
-      display: inline-block;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      color: var(--gold-dark);
-      border: 1px solid #d8c58a;
-      background: #fbf6ea;
-      border-radius: 999px;
-      padding: 0.2rem 0.7rem;
-      margin-bottom: 1.25rem;
-    }
-    .testimoni-grid {
-      display: grid;
-      gap: 1rem;
-    }
-    /* Classe di ricerca: tutte le card esempio hanno .placeholder-esempio */
-    .placeholder-esempio {
-      outline: 1px dashed #c4a046;
-      outline-offset: 2px;
-    }
-    .badge-esempio {
-      display: inline-block;
-      background: #8f2e1f;
-      color: #fff8f0;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.28rem 0.55rem;
-      border-radius: 3px;
-      margin-bottom: 0.55rem;
-    }
-    .testimonianza {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 0.75rem;
-    }
-    .chat {
-      background: #ece6da;
-      border-radius: 12px;
-      overflow: hidden;
-      min-height: 168px;
-    }
-    .chat-header {
-      background: var(--pine);
-      color: #f3edd9;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-    .chat-body {
-      padding: 0.85rem 0.7rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.45rem;
-      min-height: 118px;
-    }
-    .bubble {
-      max-width: 90%;
-      background: #fff;
-      color: var(--ink);
-      padding: 0.55rem 0.75rem 0.6rem;
-      border-radius: 0 14px 14px 14px;
-      box-shadow: 0 1px 1px rgba(28, 24, 20, 0.1);
-      font-size: 0.92rem;
-      line-height: 1.45;
-      position: relative;
-    }
-    .bubble::before {
-      content: "";
-      position: absolute;
-      left: -6px;
-      top: 0;
-      border-style: solid;
-      border-width: 0 8px 8px 0;
-      border-color: transparent #fff transparent transparent;
-    }
-    .testimonianza img {
-      width: 100%;
-      border-radius: 8px;
-    }
+.docs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;text-align:left}
+.doc{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 10px 24px rgba(27,18,48,.08)}
+.doc.wide{grid-column:1/-1}
+.lab{display:flex;align-items:center;gap:10px;font-weight:800;margin-bottom:12px}
+.lab i{font-style:normal;flex:none;width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--ink);display:grid;place-items:center;font-size:14px;font-weight:900}
+.doc img.capa, .doc .media img{border-radius:12px;border:1px solid var(--line);width:100%;height:auto}
+.doc .cols{display:grid;grid-template-columns:160px 1fr;gap:18px;align-items:center}
+.ticks{list-style:none;margin-top:12px;display:grid;gap:7px}
+.ticks li{position:relative;padding-left:28px;font-weight:600;font-size:15.5px}
+.ticks li::before{content:"✓";position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;display:grid;place-items:center;font-weight:900}
+.doc .body p{color:var(--ink2);font-weight:500;font-size:15.5px}
 
-    /* Guarantee */
-    .garanzia {
-      padding: 3.25rem 0;
-      background: var(--paper);
-    }
-    .garanzia-box {
-      display: grid;
-      gap: 1.25rem;
-      align-items: start;
-    }
-    .badge-7 {
-      width: 6.5rem;
-      height: 6.5rem;
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      margin: 0 auto;
-      flex-shrink: 0;
-    }
-    .badge-7 b { font-size: 2rem; line-height: 1; display: block; }
-    .badge-7 span { font-size: 0.8rem; letter-spacing: 0.06em; }
-    .garanzia .citazione {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 1.35rem;
-      font-style: italic;
-      border-left: 2px solid var(--gold);
-      padding-left: 1rem;
-      margin: 1rem 0 0.75rem;
-    }
-    .garanzia .nota { color: var(--muted); font-size: 0.95rem; }
+.bonus{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;max-width:960px;margin:0 auto;text-align:left}
+.bonus .tagx{display:inline-block;background:var(--orange);color:var(--ink);font-weight:900;font-size:12.5px;letter-spacing:.08em;padding:7px 14px;border-radius:99px;margin-bottom:14px}
+.bonus h2{font-size:clamp(26px,4vw,38px)}
+.bonus p{color:var(--soft)}
+.blist{list-style:none;margin:18px 0 0;display:grid;gap:12px}
+.blist li{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:12px 14px;font-weight:700}
+.bonus-media{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bonus-media img{border-radius:24px;border:4px solid var(--orange);box-shadow:0 24px 50px rgba(0,0,0,.35);width:100%;height:auto}
 
-    /* FAQ */
-    .faq { padding: 3.25rem 0; }
-    .faq-list { margin-top: 1.25rem; border-top: 1px solid var(--line); }
-    details { border-bottom: 1px solid var(--line); }
-    summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 1.05rem 1.8rem 1.05rem 0;
-      font-weight: 600;
-      position: relative;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary::after {
-      content: "+";
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-weight: 400;
-      font-size: 1.25rem;
-      color: var(--gold-dark);
-    }
-    details[open] summary::after { content: "–"; }
-    details .risposta {
-      padding: 0 0 1.15rem;
-      color: var(--muted);
-    }
+.cta-mid{text-align:center;margin-top:34px}
+.pay{text-align:center;font-size:13.5px;color:var(--ink2);margin-top:12px;font-weight:600}
+.pay p + p{margin-top:4px}
+.cta-invito{font-style:italic;font-weight:500}
+.dark .pay, .finalcta .pay{color:var(--soft)}
 
-    /* Footer */
-    footer {
-      background: var(--pine-deep);
-      color: #d9d2c3;
-      padding: 2.25rem 0 2rem;
-      font-size: 0.85rem;
-    }
-    footer a { color: #f3edd9; text-underline-offset: 3px; }
-    footer a:hover { color: var(--gold); }
-    .footer-brand {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 1.15rem;
-      color: #f3edd9;
-      margin-bottom: 0.35rem;
-    }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1.25rem;
-      margin-bottom: 1rem;
-    }
-    .footer-meta { line-height: 1.7; opacity: 0.9; }
+.per-chi-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left}
+.per-chi-card{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:26px 22px;box-shadow:0 10px 24px rgba(27,18,48,.08)}
+.per-chi-card ul{list-style:none;margin-top:12px}
+.per-chi-card li{position:relative;padding:8px 0 8px 32px;font-weight:600;font-size:15.5px}
+.per-chi-card.si li::before{content:"✓";position:absolute;left:0;top:8px;width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;display:grid;place-items:center;font-weight:900}
+.per-chi-card.no li::before{content:"✕";position:absolute;left:0;top:8px;width:20px;height:20px;border-radius:50%;background:#D3DCE6;color:var(--ink2);font-size:12px;display:grid;place-items:center;font-weight:900}
 
-    @media (min-width: 720px) {
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        align-items: center;
-        gap: 3rem;
-      }
-      .obiezioni { grid-template-columns: 1fr 1fr; }
-      .obiezioni .obiezione:last-child:nth-child(odd) { grid-column: 1 / -1; }
-      .sintesi-grid { grid-template-columns: repeat(3, 1fr); }
-      .bonus-grid { grid-template-columns: 1fr 1fr; }
-      .testimoni-grid { grid-template-columns: 1fr 1fr; }
-      .garanzia-box { grid-template-columns: auto 1fr; align-items: center; }
-      .badge-7 { margin: 0; }
-    }
-    @media (min-width: 960px) {
-      .testimoni-grid { grid-template-columns: repeat(3, 1fr); }
-      .bonus-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      a.cta { transition: none; }
-    }
-  
-    /* Overflow safety (mobile) */
-    html, body { max-width: 100%; overflow-x: hidden; }
-    img, svg, .mockup, .chat { max-width: 100%; }
-    h1, h2, h3, p, a, li, blockquote, .kicker, .fascia, .prezzo, .cta {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-    }
-    a.cta {
-      white-space: normal;
-      line-height: 1.3;
-      letter-spacing: 0.08em;
-      padding: 0.9rem 1rem;
-    }
-    @media (min-width: 720px) {
-      a.cta { letter-spacing: 0.14em; }
-    }
+.testimoni-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px;text-align:left}
+.placeholder-esempio{outline:1.5px dashed var(--orange);outline-offset:2px}
+.badge-esempio{display:inline-block;background:#8B1E1E;color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:99px;margin-bottom:8px}
+.avviso-legale{display:inline-block}
+.testimonianza{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 8px 20px rgba(27,18,48,.07)}
+.chat-header{background:var(--ink);color:#fff;font-weight:800;padding:10px 14px;border-radius:12px 12px 0 0;font-size:15px}
+.chat-body{background:#F6F2FB;padding:14px;border-radius:0 0 12px 12px}
+.bubble{background:#fff;border-radius:16px;padding:12px 14px;font-weight:600;color:var(--ink);box-shadow:0 4px 12px rgba(27,18,48,.06)}
 
-    /* Microcopy under CTA */
-    .cta-micro {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      padding: 0.7rem 1.15rem 1.15rem;
-      background: var(--paper);
-    }
-    .cta-micro p + p { margin-top: 0.35rem; }
-    .cta-invito { font-style: italic; }
-    .prezzo-note {
-      margin-top: 0.45rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+.offer{padding:72px 0 80px}
+.plans{max-width:520px;margin:36px auto 0;text-align:left}
+.plan{position:relative;background:#fff;color:var(--ink);border-radius:28px;padding:30px 26px 26px;display:flex;flex-direction:column}
+.plan.best{border:5px solid var(--orange);box-shadow:0 0 0 6px rgba(212,160,23,.25),0 30px 60px rgba(27,18,48,.18)}
+.plan h3{font-size:24px;text-align:center}
+.plan .for{text-align:center;color:var(--ink2);font-size:15px;margin:4px 0 14px;font-weight:600}
+.pr{text-align:center;font-weight:900;color:var(--orange2);line-height:1;font-size:clamp(34px,8vw,52px);letter-spacing:-.03em}
+.plan .once{text-align:center;color:var(--ink2);font-weight:700;font-size:14.5px;margin:6px 0 18px}
+.plan .ticks{margin:0 0 22px;flex:1}
+.plan .pay{margin-top:12px}
 
-    /* 4.2 Apertura */
-    .apertura { padding: 3rem 0 2.5rem; }
-    .apertura p {
-      font-size: 1.08rem;
-      color: var(--ink);
-      max-width: 38em;
-      margin-bottom: 0.95rem;
-    }
-    .apertura p:last-child { margin-bottom: 0; }
+.guar{display:flex;gap:24px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:26px;padding:26px;max-width:860px;margin:0 auto;box-shadow:0 12px 28px rgba(27,18,48,.1);text-align:left}
+.seal{flex:none;width:150px;height:150px}
+.guar h3{font-size:24px;margin-bottom:8px}
+.guar p{color:var(--ink2);font-size:16px}
+.guar .nota{margin-top:10px;font-size:13.5px;font-weight:600}
+.guar a{color:var(--ink);font-weight:700}
 
-    /* 4.4 Meccanismo */
-    .metodo { padding: 3.25rem 0; background: var(--paper); }
-    .parole {
-      display: grid;
-      gap: 0.85rem;
-      margin: 1.35rem 0 1.5rem;
-    }
-    .parola {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1rem 1.1rem 1.05rem;
-    }
-    .parola h3 { font-size: 1.35rem; margin-bottom: 0.25rem; }
-    .parola p { color: var(--muted); }
-    .metodo .segue {
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-      max-width: 40em;
-    }
-    @media (min-width: 720px) {
-      .parole { grid-template-columns: 1fr 1fr; }
-    }
+.faq{max-width:780px;margin:30px auto 0;text-align:left}
+.faq details{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px 20px;margin-bottom:10px}
+.faq summary{font-weight:800;cursor:pointer;font-size:17px;letter-spacing:-.01em}
+.faq p{color:var(--ink2);margin-top:10px;font-size:16px}
+.faq .lead, .faq-intro{margin-bottom:8px}
 
-    /* 4.6 Cosa ricevi */
-    .cosa-ricevi { padding: 3.25rem 0 0; background: var(--paper); }
-    .ricevi-grid {
-      display: grid;
-      gap: 1rem;
-      margin: 1.5rem 0 0;
-    }
-    .ricevi-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1.2rem 1.15rem 1.25rem;
-    }
-    .ricevi-card h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
-    .ricevi-card p { color: var(--muted); }
-    .bonus-heading {
-      margin: 2.25rem 0 1.1rem;
-      font-size: clamp(1.5rem, 4.5vw, 2.1rem);
-    }
-    .bonus { padding-top: 0; }
+.finalcta{background:var(--ink);color:#fff;padding:72px 0}
+.finalcta h2{max-width:780px;margin:0 auto 14px}
+.finalcta p.lead, .finalcta .subline{color:var(--soft);margin-bottom:26px}
 
-    /* 4.9 Fa per te */
-    .per-chi { padding: 3.25rem 0; }
-    .per-chi-grid {
-      display: grid;
-      gap: 1.25rem;
-      margin-top: 0.5rem;
-    }
-    .per-chi-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 1.35rem 1.2rem 1.4rem;
-    }
-    .per-chi-card h2 { font-size: 1.7rem; margin-bottom: 0.85rem; }
-    .per-chi-card ul { list-style: none; padding: 0; }
-    .per-chi-card li {
-      padding: 0.35rem 0 0.35rem 1.6rem;
-      position: relative;
-      color: var(--ink);
-    }
-    .per-chi-card.si li::before { content: "✓"; position: absolute; left: 0; color: var(--gold-dark); font-weight: 700; }
-    .per-chi-card.no li::before { content: "✕"; position: absolute; left: 0; color: #8f2e1f; font-weight: 700; }
-    @media (min-width: 720px) {
-      .per-chi-grid { grid-template-columns: 1fr 1fr; }
-    }
+footer{background:#0E0A18;color:var(--soft);text-align:center;font-size:13px;padding:26px 20px 100px}
+footer a{color:var(--soft)}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;margin-bottom:12px;font-weight:700}
+.footer-brand{font-weight:800;color:#fff;margin:6px 0 8px}
+.disclaimer{margin-top:12px;font-style:italic;max-width:44em;margin-left:auto;margin-right:auto}
 
-    /* Badge garanzia: 15 giorni */
-    .badge-7 {
-      width: 6.5rem;
-      height: 6.5rem;
-      min-width: 6.5rem;
-      min-height: 6.5rem;
-      padding: 0.4rem;
-    }
-    .badge-7 b { font-size: 2rem; line-height: 1; display: block; }
-    .badge-7 span { font-size: 0.8rem; letter-spacing: 0.06em; }
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 16px;background:rgba(27,18,48,.96);backdrop-filter:blur(8px);transform:translateY(110%);transition:transform .3s}
+.sticky.show{transform:none}
+.sticky .p{color:#fff;font-weight:900;font-size:19px;line-height:1.1;letter-spacing:-.02em}
+.sticky .p small{display:block;font-size:11.5px;font-weight:700;color:var(--soft);letter-spacing:0}
+.sticky .btn{padding:13px 22px;font-size:15px}
 
-    .disclaimer {
-      margin-top: 1rem;
-      font-style: italic;
-      opacity: 0.9;
-      max-width: 44em;
-    }
-  </style>
+h1,h2,h3,p,a,li,blockquote,summary{overflow-wrap:break-word;word-wrap:break-word}
+
+@media(min-width:861px){
+  .topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 18px;padding:8px 16px}
+  .topbar-text{margin-bottom:0}
+  .hero{padding:20px 0 48px}
+  .hero .sub{margin-bottom:12px}
+  .frame{max-width:620px;margin-bottom:8px}
+  .mockup-note{margin:6px auto 8px;max-width:620px}
+}
+@media(max-width:860px){
+  section{padding:52px 0}
+  .cards,.parole,.docs,.per-chi-grid,.testimoni-grid,.bonus{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .doc .cols{grid-template-columns:1fr}
+  .doc .cols img{max-width:200px}
+  .bonus-media{max-width:420px}
+}
+@media(max-width:560px){
+  body{font-size:16px}
+  .cards{grid-template-columns:1fr}
+  .btn{padding:17px 24px;font-size:16px}
+  .guar{flex-direction:column;text-align:center}
+  .hero{padding-top:32px}
+  .sticky{flex-wrap:wrap;justify-content:center;text-align:center}
+  .sticky .p{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn{transition:none}
+  .sticky{transition:none}
+}
+</style>
 </head>
 <body>
   <a class="skip" href="#contenuto">Vai al contenuto</a>
@@ -752,116 +249,121 @@
   </div>
 
   <main id="contenuto">
-    <!-- 2. Hero. Variante A/B della copy (non usata come titolo principale):
-         "78 carte, 4 parole: il modo più semplice per iniziare a leggere i tarocchi." -->
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <p class="kicker">L'Arte dei Tarocchi — Guida pratica per principianti</p>
-          <h1>Leggi la tua prima stesa di tarocchi senza imparare a memoria le 78 carte.</h1>
-          <p class="sub">Una guida pratica in PDF, con il mazzo completo da stampare, per capire come sono costruiti i tarocchi e iniziare a leggerli da zero, con un metodo semplice: 4 parole, 4 semi, una mappa.</p>
-        </div>
-        <figure class="mockup">
-          <img src="assets/mockup-kit-completo.webp" alt="Il kit L'Arte dei Tarocchi: ebook, Bonus Stella e i 5 bonus, con carte da stampare" width="1200" height="675" fetchpriority="high">
-          <figcaption class="mockup-note">L'Arte dei Tarocchi — Guida pratica per principianti, con il mazzo da stampare e i bonus</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 3. Fascia prezzo / offerta + CTA. Prezzo: 19,90 € (IVA inclusa), senza barrato né sconto. -->
-    <section class="offerta" id="offerta" aria-label="Offerta">
-      <p class="fascia">Tutto quello che ti serve per iniziare, in un unico download</p>
-      <div class="prezzi">
-        <p class="prezzo-note">Ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (65 pagine) + Bonus Stella: mazzo di 78 carte da stampare + 5 bonus</p>
-        <div class="prezzo-box">
-          <!-- Prezzo approvato: 19,90 € (IVA inclusa). Nessun prezzo barrato / "risparmi" (Omnibus: niente sconto senza storico reale). -->
-          <span class="prezzo">19,90 €</span>
-        </div>
-        <p class="prezzo-note">(IVA inclusa) · pagamento unico, nessun abbonamento</p>
-      </div>
-      <div class="cta-wrap">
-        <!-- {{CHECKOUT_URL}} : sostituire l'href di test qui sotto con l'URL reale del checkout Hotmart. -->
-        <a class="cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Voglio iniziare: 19,90 €</a>
-      </div>
-      <div class="cta-micro">
-        <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
-        <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
-        <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
-      </div>
-    </section>
-
-    <!-- 4.2 Apertura (blocco della copy senza sezione corrispondente nello scheletro) -->
-    <section class="apertura">
+    <header class="hero pattern">
       <div class="wrap">
+        <span class="pill">L'Arte dei Tarocchi — Guida pratica per principianti</span>
+        <h1>Leggi la tua prima stesa di tarocchi <mark>senza imparare a memoria le 78 carte.</mark></h1>
+        <p class="sub">Una guida pratica in PDF, con il mazzo completo da stampare, per capire come sono costruiti i tarocchi e iniziare a leggerli da zero, con un metodo semplice: 4 parole, 4 semi, una mappa.</p>
+        <figure class="frame">
+          <img src="assets/mockup-kit-completo.webp" alt="Il kit L'Arte dei Tarocchi: ebook, Bonus Stella e i 5 bonus, con carte da stampare" width="1200" height="675" fetchpriority="high">
+        </figure>
+        <figcaption class="mockup-note">L'Arte dei Tarocchi — Guida pratica per principianti, con il mazzo da stampare e i bonus</figcaption>
+        <!-- {CHECKOUT_URL} -->
+        <a class="btn cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Voglio iniziare: 19,90 €</a>
+        <div class="pay">
+          <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
+          <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
+          <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
+        </div>
+        <div class="trust">
+          <span>✔ Pagamento sicuro</span>
+          <span>✔ PDF scaricabile subito</span>
+          <span>✔ Accesso immediato</span>
+          <span>✔ Garanzia 15 giorni</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="tint">
+      <div class="wrap center">
         <p>Ti è mai capitato di avere un mazzo di tarocchi in mano (o di guardarne uno in vetrina) e pensare: <em>“Bello, ma non fa per me”</em>?</p>
         <p>Settantotto carte, nomi strani, simboli ovunque. Sembra una materia per pochi, per chi “ha il dono” o per chi ha passato anni sui libri.</p>
         <p>La verità è più semplice: <strong>i tarocchi hanno una struttura</strong>. Quando la vedi, il mazzo smette di essere un muro e diventa una mappa.</p>
       </div>
     </section>
 
-    <!-- 4.3 Obiezioni — titoli e intro della copy v1.4 -->
-    <section class="problema">
-      <div class="wrap">
-        <h2>La curiosità c'è. Allora cosa ti blocca?</h2>
-        <p class="intro">Se ti ritrovi in almeno uno di questi pensieri, questa guida è stata scritta per te.</p>
-        <div class="obiezioni">
-          <article class="obiezione">
-            <blockquote>“Sono 78 carte, non me le ricorderò mai.”</blockquote>
-            <h3>Il muro delle 78 carte</h3>
-            <p>Non devi. Ti basta capire come sono organizzate: 22 Arcani Maggiori e 56 Minori divisi in 4 semi. Il resto lo consulti quando serve.</p>
+    <section class="pattern">
+      <div class="wrap center">
+        <span class="pill blue">La curiosità c'è</span>
+        <h2>La curiosità c'è. Allora <mark>cosa ti blocca</mark>?</h2>
+        <p class="lead">Se ti ritrovi in almeno uno di questi pensieri, questa guida è stata scritta per te.</p>
+        <div class="cards">
+          <article class="card">
+            <span class="ic" aria-hidden="true">🧱</span>
+            <div>
+              <blockquote>“Sono 78 carte, non me le ricorderò mai.”</blockquote>
+              <h3>Il muro delle 78 carte</h3>
+              <p>Non devi. Ti basta capire come sono organizzate: 22 Arcani Maggiori e 56 Minori divisi in 4 semi. Il resto lo consulti quando serve.</p>
+            </div>
           </article>
-          <article class="obiezione">
-            <blockquote>“Ci vuole un dono.”</blockquote>
-            <h3>Il mito del dono</h3>
-            <p>I tarocchi sono un linguaggio di simboli. E i linguaggi si imparano: con un metodo, un po' di pratica e curiosità.</p>
+          <article class="card">
+            <span class="ic" aria-hidden="true">✨</span>
+            <div>
+              <blockquote>“Ci vuole un dono.”</blockquote>
+              <h3>Il mito del dono</h3>
+              <p>I tarocchi sono un linguaggio di simboli. E i linguaggi si imparano: con un metodo, un po' di pratica e curiosità.</p>
+            </div>
           </article>
-          <article class="obiezione">
-            <blockquote>“Non so da dove cominciare.”</blockquote>
-            <h3>Mille informazioni, nessun ordine</h3>
-            <p>Arcani, semi, stese, carte dritte e rovesciate… Troppe informazioni sparse. Qui trovi un percorso in ordine, dal primo passo alla prima stesa.</p>
+          <article class="card">
+            <span class="ic" aria-hidden="true">🗺️</span>
+            <div>
+              <blockquote>“Non so da dove cominciare.”</blockquote>
+              <h3>Mille informazioni, nessun ordine</h3>
+              <p>Arcani, semi, stese, carte dritte e rovesciate… Troppe informazioni sparse. Qui trovi un percorso in ordine, dal primo passo alla prima stesa.</p>
+            </div>
           </article>
-          <article class="obiezione">
-            <blockquote>“Conosco qualche significato, ma non so collegarli.”</blockquote>
-            <h3>Significati sparsi che non diventano una frase</h3>
-            <p>È il blocco più comune. Ti mostriamo come dare un ruolo a ogni posizione e leggere le carte come un racconto.</p>
+          <article class="card">
+            <span class="ic" aria-hidden="true">🔗</span>
+            <div>
+              <blockquote>“Conosco qualche significato, ma non so collegarli.”</blockquote>
+              <h3>Significati sparsi che non diventano una frase</h3>
+              <p>È il blocco più comune. Ti mostriamo come dare un ruolo a ogni posizione e leggere le carte come un racconto.</p>
+            </div>
           </article>
-          <article class="obiezione">
-            <blockquote>“E se esce una carta ‘brutta’?”</blockquote>
-            <h3>La paura della carta "sbagliata"</h3>
-            <p>La Morte, la Torre, il Dieci di Spade… Fanno paura per il nome, ma nella lettura parlano di fasi, cambiamenti, chiusure. Imparerai a leggerle con calma, senza farti spaventare dal nome.</p>
+          <article class="card">
+            <span class="ic" aria-hidden="true">⚡</span>
+            <div>
+              <blockquote>“E se esce una carta ‘brutta’?”</blockquote>
+              <h3>La paura della carta "sbagliata"</h3>
+              <p>La Morte, la Torre, il Dieci di Spade… Fanno paura per il nome, ma nella lettura parlano di fasi, cambiamenti, chiusure. Imparerai a leggerle con calma, senza farti spaventare dal nome.</p>
+            </div>
           </article>
-          <article class="obiezione">
-            <blockquote>“Si dice che il primo mazzo vada regalato…”</blockquote>
-            <h3>La tradizione del primo mazzo</h3>
-            <p>Lo sappiamo. 😉 Per questo il mazzo è incluso, da stampare: nessun acquisto in negozio, nessuna superstizione da sfidare.</p>
+          <article class="card">
+            <span class="ic" aria-hidden="true">🎁</span>
+            <div>
+              <blockquote>“Si dice che il primo mazzo vada regalato…”</blockquote>
+              <h3>La tradizione del primo mazzo</h3>
+              <p>Lo sappiamo. 😉 Per questo il mazzo è incluso, da stampare: nessun acquisto in negozio, nessuna superstizione da sfidare.</p>
+            </div>
           </article>
-          <article class="obiezione">
-            <blockquote>“Sono scettica/o.”</blockquote>
-            <h3>“Ma io non ci credo”</h3>
-            <p>Va benissimo. Non devi crederci per usare i tarocchi come strumento di riflessione: un modo diverso di guardare una situazione e farti domande migliori.</p>
+          <article class="card last">
+            <span class="ic" aria-hidden="true">💭</span>
+            <div>
+              <blockquote>“Sono scettica/o.”</blockquote>
+              <h3>“Ma io non ci credo”</h3>
+              <p>Va benissimo. Non devi crederci per usare i tarocchi come strumento di riflessione: un modo diverso di guardare una situazione e farti domande migliori.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 4.3b Il vero problema (copy v1.1) -->
-    <section class="problema-reale">
-      <div class="wrap">
-        <p class="etichetta">Il vero problema</p>
-        <h2>Il problema non sei tu. È da dove si comincia.</h2>
-        <p>Quasi sempre i tarocchi vengono presentati così: 78 carte, 78 significati, una lista da studiare. È normale che sembrino una montagna.</p>
-        <p>Ma una lista di significati non ti insegna a leggere. Ti insegna a ripetere. E quando le carte sul tavolo sono tre, la lista non basta più.</p>
-        <p>Quello che manca non è il talento, né la memoria: <strong>manca la struttura</strong>. Capire perché il mazzo è fatto così: semi, numeri, figure, Arcani Maggiori. Una volta che la vedi, ogni carta ha un posto, e le carte cominciano a parlarsi tra loro.</p>
-        <p class="chiusura"><strong>È esattamente da qui che parte questa guida.</strong></p>
+    <section class="tint">
+      <div class="wrap center">
+        <span class="pill blue">Il vero problema</span>
+        <h2>Il problema non sei tu. È <mark>da dove si comincia.</mark></h2>
+        <p class="lead" style="margin-bottom:16px">Quasi sempre i tarocchi vengono presentati così: 78 carte, 78 significati, una lista da studiare. È normale che sembrino una montagna.</p>
+        <p class="lead" style="margin-bottom:16px">Ma una lista di significati non ti insegna a leggere. Ti insegna a ripetere. E quando le carte sul tavolo sono tre, la lista non basta più.</p>
+        <p class="lead" style="margin-bottom:16px">Quello che manca non è il talento, né la memoria: <strong>manca la struttura</strong>. Capire perché il mazzo è fatto così: semi, numeri, figure, Arcani Maggiori. Una volta che la vedi, ogni carta ha un posto, e le carte cominciano a parlarsi tra loro.</p>
+        <p class="lead"><strong>È esattamente da qui che parte questa guida.</strong></p>
       </div>
     </section>
 
-    <!-- 4.4 Meccanismo (blocco della copy senza sezione nello scheletro).
-         [CONTEÚDO – CONFIRMAR]: le 4 parole devono corrispondere all'ebook IT. -->
-    <section class="metodo">
-      <div class="wrap">
-        <h2>Il metodo: 78 carte, 4 parole</h2>
-        <p class="intro">Ogni seme degli Arcani Minori racconta una parte della vita. Se sai queste quattro parole, hai già una chiave per 56 carte su 78:</p>
+    <section class="pattern">
+      <div class="wrap center">
+        <span class="pill">Il metodo</span>
+        <h2>Il metodo: <mark>78 carte, 4 parole</mark></h2>
+        <p class="lead">Ogni seme degli Arcani Minori racconta una parte della vita. Se sai queste quattro parole, hai già una chiave per 56 carte su 78:</p>
         <div class="parole">
           <article class="parola">
             <h3>🔥 Bastoni = Slancio</h3>
@@ -886,12 +388,9 @@
       </div>
     </section>
 
-    <!-- 4.5 Cinque risultati. La copy non ha un titolo/intro di sezione. -->
-    <section class="risultati">
+    <section class="tint">
       <div class="wrap">
-        <h2>{{RISULTATI_TITOLO}}</h2>
-        <p class="intro">{{RISULTATI_INTRO}}</p>
-        <div class="risultato-lista">
+        <div class="risultati-lista">
           <article class="risultato">
             <span class="num">I</span>
             <div>
@@ -931,20 +430,22 @@
       </div>
     </section>
 
-    <!-- 4.5b In breve, 3 punti (copy v1.4) -->
-    <section class="sintesi">
-      <div class="wrap">
+    <section class="pattern">
+      <div class="wrap center">
         <h2>In breve, ecco cosa ti porti a casa</h2>
-        <div class="sintesi-grid">
-          <article class="sintesi-card">
+        <div class="steps">
+          <article class="step">
+            <div class="n" aria-hidden="true">1</div>
             <h3>🗝️ Autonomia</h3>
             <p>fai le tue stese quando vuoi, da sola/o, senza dover chiedere ogni volta a qualcun altro.</p>
           </article>
-          <article class="sintesi-card">
+          <article class="step">
+            <div class="n" aria-hidden="true">2</div>
             <h3>🧭 Un metodo chiaro</h3>
             <p>leggi le carte seguendo una struttura (4 parole, seme + numero, figure), anche se oggi parti da zero.</p>
           </article>
-          <article class="sintesi-card">
+          <article class="step">
+            <div class="n" aria-hidden="true">3</div>
             <h3>🪞 Uno spazio per riflettere</h3>
             <p>usa i tarocchi per mettere ordine nei pensieri e guardare una situazione da un'altra prospettiva.</p>
           </article>
@@ -952,94 +453,104 @@
       </div>
     </section>
 
-    <!-- 4.6 Cosa ricevi + 4.7 bonus. Il mazzo è il blocco in evidenza (ex Star-Bonus). -->
-    <section class="cosa-ricevi">
-      <div class="wrap">
+    <section class="tint" id="cosa-ricevi">
+      <div class="wrap center">
+        <span class="pill blue">Cosa ricevi</span>
         <h2>Cosa ricevi</h2>
-        <div class="ricevi-grid">
-          <article class="ricevi-card ricevi-ebook">
-            <img class="capa" src="assets/capa-ebook-principale.webp" alt="Copertina dell'ebook L'Arte dei Tarocchi — Guida pratica per principianti" width="1166" height="1654" loading="lazy">
-            <div>
-              <h3>📘 L'ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (PDF, 65 pagine)</h3>
-              <p>il metodo delle 4 parole passo dopo passo, dalle basi alla tua prima stesa, con un esercizio alla fine di ogni capitolo e un piano di pratica di 21 giorni.</p>
+        <div class="docs">
+          <article class="doc wide">
+            <div class="cols">
+              <img class="capa" src="assets/capa-ebook-principale.webp" alt="Copertina dell'ebook L'Arte dei Tarocchi — Guida pratica per principianti" width="1166" height="1654" loading="lazy">
+              <div class="body">
+                <div class="lab"><i>1</i> 📘 L'ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (PDF, 65 pagine)</div>
+                <p>il metodo delle 4 parole passo dopo passo, dalle basi alla tua prima stesa, con un esercizio alla fine di ogni capitolo e un piano di pratica di 21 giorni.</p>
+              </div>
             </div>
           </article>
-          <article class="ricevi-card">
-            <h3>⚡ Accesso immediato</h3>
-            <p>subito dopo il pagamento ricevi via email il link per scaricare tutto. Leggi da telefono, tablet o computer.</p>
+          <article class="doc wide">
+            <div class="lab"><i>2</i> ⚡ Accesso immediato</div>
+            <div class="body">
+              <p>subito dopo il pagamento ricevi via email il link per scaricare tutto. Leggi da telefono, tablet o computer.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="bonus">
+    <section class="dark">
       <div class="wrap">
-        <article class="star-bonus">
-          <span class="etichetta">Bonus Stella</span>
-          <div class="star-bonus-inner">
-            <div class="star-bonus-media">
-              <img src="assets/capa-bonus-stella.webp" alt="Copertina del Bonus Stella: il mazzo di 78 carte da stampare" width="1200" height="1697" loading="lazy">
-              <img src="assets/mockup-mazzo-stampato.webp" alt="Mazzo di 78 carte da stampare, con illustrazioni originali del 1909 di Pamela Colman Smith e nomi in italiano" width="1200" height="1200" loading="lazy">
-            </div>
-            <div>
-              <h2>Bonus Stella: Il Mazzo di 78 Carte da stampare</h2>
-              <p>PDF A4, 28 pagine: 22 Arcani Maggiori + 56 Arcani Minori, con le illustrazioni originali del 1909 di Pamela Colman Smith, con i nomi in italiano. Non devi comprare nessun mazzo per iniziare.</p>
-              <ul>
-                <li>6 carte per foglio, con segni di taglio</li>
-                <li>Dorso da stampare fronte-retro</li>
-                <li>Pronto per la stampa a casa o in copisteria</li>
-              </ul>
-            </div>
+        <div class="bonus">
+          <div>
+            <span class="tagx">BONUS STELLA</span>
+            <h2>Bonus Stella: Il Mazzo di 78 Carte da stampare</h2>
+            <p>PDF A4, 28 pagine: 22 Arcani Maggiori + 56 Arcani Minori, con le illustrazioni originali del 1909 di Pamela Colman Smith, con i nomi in italiano. Non devi comprare nessun mazzo per iniziare.</p>
+            <ul class="blist">
+              <li>6 carte per foglio, con segni di taglio</li>
+              <li>Dorso da stampare fronte-retro</li>
+              <li>Pronto per la stampa a casa o in copisteria</li>
+            </ul>
           </div>
-        </article>
-        <h2 class="bonus-heading">Inclusi senza costi aggiuntivi: il Bonus Stella + 5 bonus</h2>
-        <div class="bonus-grid">
-          <article class="bonus-card">
-            <img src="assets/capa-bonus1-78-carte-spiegate.webp" alt="Copertina del bonus Le 78 Carte Spiegate" width="1166" height="1654" loading="lazy">
-            <div>
-              <p class="n">Bonus 1</p>
-              <h3>Le 78 Carte Spiegate (87 pagine)</h3>
-              <p>una carta per pagina, con parole chiave, simboli da osservare, significato dritto e rovesciato, spunti per amore e lavoro e un consiglio in una frase. Il tuo dizionario da consultare quando vuoi.</p>
-            </div>
-          </article>
-          <article class="bonus-card">
-            <img src="assets/capa-bonus2-spazio-di-lettura.webp" alt="Copertina del bonus Come Preparare lo Spazio di Lettura" width="1166" height="1654" loading="lazy">
-            <div>
-              <p class="n">Bonus 2</p>
-              <h3>Come Preparare lo Spazio di Lettura (8 pagine)</h3>
-              <p>i 4 elementi, come predisporre il tavolo, un piccolo rituale di 5 minuti per iniziare con calma e intenzione e come prenderti cura del tuo mazzo.</p>
-            </div>
-          </article>
-          <article class="bonus-card">
-            <img src="assets/capa-bonus3-50-domande.webp" alt="Copertina del bonus 50 Domande da Fare ai Tarocchi" width="1166" height="1654" loading="lazy">
-            <div>
-              <p class="n">Bonus 3</p>
-              <h3>50 Domande da Fare ai Tarocchi (9 pagine)</h3>
-              <p>quando non sai come iniziare una stesa, parti da qui. Domande aperte, divise per temi, che aiutano a riflettere.</p>
-            </div>
-          </article>
-          <article class="bonus-card">
-            <img src="assets/capa-bonus4-stese.webp" alt="Copertina del bonus Stese Passo dopo Passo" width="1200" height="1697" loading="lazy">
-            <div>
-              <p class="n">Bonus 4</p>
-              <h3>Stese Passo dopo Passo (16 pagine, da stampare)</h3>
-              <p>6 stese, dalla più semplice alla più completa: carta del giorno, Sì/No (da leggere come un termometro, non come una sentenza), due stese a tre carte, la stesa dell'amore e la Croce Celtica. Per ognuna: schema, significato di ogni posizione e un foglio di lettura da compilare.</p>
-            </div>
-          </article>
-          <article class="bonus-card">
-            <img src="assets/capa-bonus5-diario.webp" alt="Copertina del bonus Diario dei Tarocchi" width="1200" height="1697" loading="lazy">
-            <div>
-              <p class="n">Bonus 5</p>
-              <h3>Diario dei Tarocchi (14 pagine, da stampare)</h3>
-              <p>carta del giorno per 4 settimane, fogli di lettura, una pagina per simboli e intuizioni e la checklist delle 78 carte, per vedere come cresce la tua lettura.</p>
-            </div>
-          </article>
+          <div class="bonus-media">
+            <img src="assets/capa-bonus-stella.webp" alt="Copertina del Bonus Stella: il mazzo di 78 carte da stampare" width="1200" height="1697" loading="lazy">
+            <img src="assets/mockup-mazzo-stampato.webp" alt="Mazzo di 78 carte da stampare, con illustrazioni originali del 1909 di Pamela Colman Smith e nomi in italiano" width="1200" height="1200" loading="lazy">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 4.9 Fa per te / Non fa per te (blocco della copy senza sezione nello scheletro) -->
-    <section class="per-chi">
+    <section class="pattern">
+      <div class="wrap center">
+        <span class="pill">I 5 bonus</span>
+        <h2>Inclusi senza costi aggiuntivi: il <mark>Bonus Stella + 5 bonus</mark></h2>
+        <div class="docs">
+          <article class="doc">
+            <img class="capa" src="assets/capa-bonus1-78-carte-spiegate.webp" alt="Copertina del bonus Le 78 Carte Spiegate" width="1166" height="1654" loading="lazy">
+            <div class="lab"><i>1</i> Bonus 1</div>
+            <h3>Le 78 Carte Spiegate (87 pagine)</h3>
+            <p>una carta per pagina, con parole chiave, simboli da osservare, significato dritto e rovesciato, spunti per amore e lavoro e un consiglio in una frase. Il tuo dizionario da consultare quando vuoi.</p>
+          </article>
+          <article class="doc">
+            <img class="capa" src="assets/capa-bonus2-spazio-di-lettura.webp" alt="Copertina del bonus Come Preparare lo Spazio di Lettura" width="1166" height="1654" loading="lazy">
+            <div class="lab"><i>2</i> Bonus 2</div>
+            <h3>Come Preparare lo Spazio di Lettura (8 pagine)</h3>
+            <p>i 4 elementi, come predisporre il tavolo, un piccolo rituale di 5 minuti per iniziare con calma e intenzione e come prenderti cura del tuo mazzo.</p>
+          </article>
+          <article class="doc">
+            <img class="capa" src="assets/capa-bonus3-50-domande.webp" alt="Copertina del bonus 50 Domande da Fare ai Tarocchi" width="1166" height="1654" loading="lazy">
+            <div class="lab"><i>3</i> Bonus 3</div>
+            <h3>50 Domande da Fare ai Tarocchi (9 pagine)</h3>
+            <p>quando non sai come iniziare una stesa, parti da qui. Domande aperte, divise per temi, che aiutano a riflettere.</p>
+          </article>
+          <article class="doc">
+            <img class="capa" src="assets/capa-bonus4-stese.webp" alt="Copertina del bonus Stese Passo dopo Passo" width="1200" height="1697" loading="lazy">
+            <div class="lab"><i>4</i> Bonus 4</div>
+            <h3>Stese Passo dopo Passo (16 pagine, da stampare)</h3>
+            <p>6 stese, dalla più semplice alla più completa: carta del giorno, Sì/No (da leggere come un termometro, non come una sentenza), due stese a tre carte, la stesa dell'amore e la Croce Celtica. Per ognuna: schema, significato di ogni posizione e un foglio di lettura da compilare.</p>
+          </article>
+          <article class="doc wide">
+            <div class="cols">
+              <img class="capa" src="assets/capa-bonus5-diario.webp" alt="Copertina del bonus Diario dei Tarocchi" width="1200" height="1697" loading="lazy">
+              <div>
+                <div class="lab"><i>5</i> Bonus 5</div>
+                <h3>Diario dei Tarocchi (14 pagine, da stampare)</h3>
+                <p>carta del giorno per 4 settimane, fogli di lettura, una pagina per simboli e intuizioni e la checklist delle 78 carte, per vedere come cresce la tua lettura.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="cta-mid">
+          <!-- {CHECKOUT_URL} -->
+          <a class="btn cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Sì, voglio iniziare a leggere i tarocchi</a>
+          <div class="pay">
+            <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
+            <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
+            <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tint">
       <div class="wrap">
         <div class="per-chi-grid">
           <article class="per-chi-card si">
@@ -1064,182 +575,170 @@
       </div>
     </section>
 
-    <!-- 4.8 / 9. Testimonianze: la copy v1 non ha testi né nomi (prova sociale ancora da raccogliere).
-         Slot lasciati come esempio, con badge e classe placeholder-esempio. -->
-    <section class="testimonianze">
-      <div class="wrap">
-        <p class="kicker">{{TESTIMONIANZE_ETICHETTA}}</p>
-        <h2>{{TESTIMONIANZE_TITOLO}}</h2>
-        <p class="intro">{{TESTIMONIANZE_INTRO}}</p>
-        <p class="avviso-legale">Solo testimonianze reali, con autorizzazione</p>
+    <section class="pattern">
+      <div class="wrap center">
+        <span class="pill avviso-legale">Solo testimonianze reali, con autorizzazione</span>
         <div class="testimoni-grid">
           <article class="testimonianza placeholder-esempio">
             <span class="badge-esempio">TESTO DI ESEMPIO – SOSTITUIRE</span>
-            <div class="chat">
-              <div class="chat-header">{{NOME_1}}</div>
-              <div class="chat-body">
-                <p class="bubble">{{TESTIMONIANZA_1}}</p>
-              </div>
-            </div>
+            <div class="chat-header">{{NOME_1}}</div>
+            <div class="chat-body"><p class="bubble">{{TESTIMONIANZA_1}}</p></div>
           </article>
           <article class="testimonianza placeholder-esempio">
             <span class="badge-esempio">TESTO DI ESEMPIO – SOSTITUIRE</span>
-            <div class="chat">
-              <div class="chat-header">{{NOME_2}}</div>
-              <div class="chat-body">
-                <p class="bubble">{{TESTIMONIANZA_2}}</p>
-              </div>
-            </div>
+            <div class="chat-header">{{NOME_2}}</div>
+            <div class="chat-body"><p class="bubble">{{TESTIMONIANZA_2}}</p></div>
           </article>
           <article class="testimonianza placeholder-esempio">
             <span class="badge-esempio">TESTO DI ESEMPIO – SOSTITUIRE</span>
-            <div class="chat">
-              <div class="chat-header">{{NOME_3}}</div>
-              <div class="chat-body">
-                <p class="bubble">{{TESTIMONIANZA_3}}</p>
-              </div>
-            </div>
+            <div class="chat-header">{{NOME_3}}</div>
+            <div class="chat-body"><p class="bubble">{{TESTIMONIANZA_3}}</p></div>
           </article>
           <article class="testimonianza placeholder-esempio">
             <span class="badge-esempio">TESTO DI ESEMPIO – SOSTITUIRE</span>
-            <div class="chat">
-              <div class="chat-header">{{NOME_4}}</div>
-              <div class="chat-body">
-                <p class="bubble">{{TESTIMONIANZA_4}}</p>
-              </div>
-            </div>
+            <div class="chat-header">{{NOME_4}}</div>
+            <div class="chat-body"><p class="bubble">{{TESTIMONIANZA_4}}</p></div>
           </article>
           <article class="testimonianza placeholder-esempio">
             <span class="badge-esempio">TESTO DI ESEMPIO – SOSTITUIRE</span>
-            <div class="chat">
-              <div class="chat-header">{{NOME_5}}</div>
-              <div class="chat-body">
-                <p class="bubble">{{TESTIMONIANZA_5}}</p>
-              </div>
-            </div>
+            <div class="chat-header">{{NOME_5}}</div>
+            <div class="chat-body"><p class="bubble">{{TESTIMONIANZA_5}}</p></div>
           </article>
           <article class="testimonianza placeholder-esempio">
             <span class="badge-esempio">TESTO DI ESEMPIO – SOSTITUIRE</span>
-            <div class="chat">
-              <div class="chat-header">{{NOME_6}}</div>
-              <div class="chat-body">
-                <p class="bubble">{{TESTIMONIANZA_6}}</p>
-              </div>
-            </div>
+            <div class="chat-header">{{NOME_6}}</div>
+            <div class="chat-body"><p class="bubble">{{TESTIMONIANZA_6}}</p></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 4.10 CTA intermedia (copy v1.4) -->
-    <section class="cta-block">
+    <section class="offer pattern" id="offerta">
+      <div class="wrap center">
+        <span class="pill">L'offerta</span>
+        <h2>Tutto quello che ti serve per iniziare, <mark>in un unico download</mark></h2>
+        <div class="plans">
+          <div class="plan best">
+            <h3>L'Arte dei Tarocchi</h3>
+            <p class="for">Ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (65 pagine) + Bonus Stella: mazzo di 78 carte da stampare + 5 bonus</p>
+            <div class="pr">19,90 €</div>
+            <p class="once">(IVA inclusa) · pagamento unico, nessun abbonamento</p>
+            <ul class="ticks">
+              <li>L'ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (PDF, 65 pagine)</li>
+              <li>Bonus Stella: Il Mazzo di 78 Carte da stampare</li>
+              <li>5 bonus, senza costi aggiuntivi</li>
+              <li>Accesso immediato</li>
+            </ul>
+            <!-- {CHECKOUT_URL} -->
+            <a class="btn block cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Scarica L'Arte dei Tarocchi: 19,90 €</a>
+            <div class="pay">
+              <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
+              <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
+              <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tint">
       <div class="wrap">
-        <h2>Tutto quello che ti serve per iniziare, in un unico download</h2>
-        <p class="intro" style="margin-inline:auto;">Ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (65 pagine) + Bonus Stella: mazzo di 78 carte da stampare + 5 bonus</p>
+        <div class="guar">
+          <svg class="seal" viewBox="0 0 150 150" width="150" height="150" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F0D078"/>
+                <stop offset="1" stop-color="#9A7420"/>
+              </linearGradient>
+            </defs>
+            <circle cx="75" cy="75" r="72" fill="#1B1230"/>
+            <circle cx="75" cy="75" r="66" fill="none" stroke="url(#g1)" stroke-width="6"/>
+            <circle cx="75" cy="75" r="58" fill="none" stroke="#E8C56B" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <text x="75" y="70" text-anchor="middle" fill="#F0D078" font-family="Inter,sans-serif" font-weight="900" font-size="36">15</text>
+            <text x="75" y="92" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="800" font-size="11" letter-spacing="2">GIORNI</text>
+          </svg>
+          <div>
+            <h3>Provalo senza rischi</h3>
+            <p>Hai 15 giorni per scaricare la guida, leggerla e provare le prime stese. Se ti accorgi che non fa per te, chiedi il rimborso entro 15 giorni dall'acquisto (direttamente dalla piattaforma di pagamento o scrivendoci a <a href="mailto:{{EMAIL_CONTATTO}}">{{EMAIL_CONTATTO}}</a>) e ti restituiamo l'intero importo. Nessuna domanda complicata.</p>
+            <p class="nota">Garanzia commerciale volontaria. Restano salvi i diritti previsti dal Codice del Consumo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pattern">
+      <div class="wrap center">
+        <span class="pill">Prima di iniziare, chiariamo ogni dubbio.</span>
+        <h2>Domande frequenti</h2>
+        <p class="lead faq-intro">Qui trovi le risposte alle domande più comuni di chi si avvicina ai tarocchi per la prima volta. Non trovi la tua? Scrivici a <a href="mailto:{{EMAIL_CONTATTO}}">{{EMAIL_CONTATTO}}</a>.</p>
+        <div class="faq">
+          <details>
+            <summary>Devo sapere già qualcosa di tarocchi?</summary>
+            <p>No. La guida parte da zero, anche se non hai mai avuto un mazzo in mano.</p>
+          </details>
+          <details>
+            <summary>Devo imparare a memoria le 78 carte?</summary>
+            <p>No. Impari la struttura (semi, numeri, figure, Arcani Maggiori) e consulti i significati quando servono.</p>
+          </details>
+          <details>
+            <summary>Serve un dono particolare?</summary>
+            <p>No. Serve curiosità e un po' di pratica.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo serve?</summary>
+            <p>Vai al tuo ritmo. La guida ti accompagna nella tua prima lettura semplice, passo dopo passo, e ti propone un piano di pratica di 21 giorni per prendere confidenza.</p>
+          </details>
+          <details>
+            <summary>Devo comprare un mazzo?</summary>
+            <p>No: il mazzo completo di 78 carte è incluso, da stampare a casa o in copisteria. Se hai già un mazzo di 78 carte, puoi usare anche il tuo.</p>
+          </details>
+          <details>
+            <summary>Posso usare un altro mazzo che ho già?</summary>
+            <p>Sì, se è un mazzo da 78 carte con Arcani Maggiori e Minori: semi, numeri e figure funzionano allo stesso modo. Le immagini di riferimento della guida sono quelle del mazzo incluso (le illustrazioni originali del 1909 di Pamela Colman Smith, con i nomi in italiano), quindi con altri mazzi (per esempio i marsigliesi) qualche dettaglio può cambiare.</p>
+          </details>
+          <details>
+            <summary>Posso fare le carte a me stessa/o?</summary>
+            <p>Sì. Il metodo funziona per le tue domande e per esercitarti con amici e familiari.</p>
+          </details>
+          <details>
+            <summary>I tarocchi prevedono il futuro?</summary>
+            <p>Questa guida non promette previsioni. Ti insegna a leggere i simboli delle carte e a usarli come strumento di riflessione e conoscenza di sé.</p>
+          </details>
+          <details>
+            <summary>È un corso o un ebook?</summary>
+            <p>È un ebook pratico in PDF, con esercizi e materiali da stampare. Nessun video, nessun abbonamento.</p>
+          </details>
+          <details>
+            <summary>Come lo ricevo e per quanto tempo?</summary>
+            <p>Subito dopo il pagamento ricevi l'accesso via email. Il PDF è tuo: lo scarichi e lo rileggi quando vuoi.</p>
+          </details>
+          <details>
+            <summary>E se non fa per me?</summary>
+            <p>Hai la garanzia di 15 giorni: scrivici e ti rimborsiamo.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="finalcta center">
+      <div class="wrap">
+        <span class="pill dk">L'Arte dei Tarocchi</span>
+        <h2>Il mazzo ha una mappa. <mark>È ora di vederla.</mark></h2>
+        <p class="subline">Ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (65 pagine) + Bonus Stella: mazzo di 78 carte da stampare + 5 bonus</p>
+        <div class="pr" style="color:#E8C56B;margin-bottom:8px">19,90 €</div>
+        <p class="subline" style="margin-bottom:26px">(IVA inclusa) · pagamento unico, nessun abbonamento</p>
         <!-- {CHECKOUT_URL} -->
-        <a class="cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Sì, voglio iniziare a leggere i tarocchi</a>
-        <div class="cta-micro">
+        <a class="btn cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Scarica L'Arte dei Tarocchi: 19,90 €</a>
+        <div class="pay">
           <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
           <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
           <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
         </div>
       </div>
     </section>
-
-    <!-- 4.11 Garanzia: 15 giorni (decisione del Vitor). -->
-    <section class="garanzia">
-      <div class="wrap garanzia-box">
-        <div class="badge-7" aria-hidden="true">
-          <div><b>15</b><span>giorni</span></div>
-        </div>
-        <div>
-          <h2>Provalo senza rischi</h2>
-          <p>Hai 15 giorni per scaricare la guida, leggerla e provare le prime stese. Se ti accorgi che non fa per te, chiedi il rimborso entro 15 giorni dall'acquisto (direttamente dalla piattaforma di pagamento o scrivendoci a <a href="mailto:{{EMAIL_CONTATTO}}">{{EMAIL_CONTATTO}}</a>) e ti restituiamo l'intero importo. Nessuna domanda complicata.</p>
-          <p class="citazione">{{GARANZIA_CITAZIONE}}</p>
-          <p class="nota">Garanzia commerciale volontaria. Restano salvi i diritti previsti dal Codice del Consumo.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4.12 FAQ (copy v1.4). -->
-    <section class="faq">
-      <div class="wrap">
-        <p class="kicker">Prima di iniziare, chiariamo ogni dubbio.</p>
-        <h2>Domande frequenti</h2>
-        <p class="intro">Qui trovi le risposte alle domande più comuni di chi si avvicina ai tarocchi per la prima volta. Non trovi la tua? Scrivici a <a href="mailto:{{EMAIL_CONTATTO}}">{{EMAIL_CONTATTO}}</a>.</p>
-        <div class="faq-list">
-          <details>
-            <summary>Devo sapere già qualcosa di tarocchi?</summary>
-            <p class="risposta">No. La guida parte da zero, anche se non hai mai avuto un mazzo in mano.</p>
-          </details>
-          <details>
-            <summary>Devo imparare a memoria le 78 carte?</summary>
-            <p class="risposta">No. Impari la struttura (semi, numeri, figure, Arcani Maggiori) e consulti i significati quando servono.</p>
-          </details>
-          <details>
-            <summary>Serve un dono particolare?</summary>
-            <p class="risposta">No. Serve curiosità e un po' di pratica.</p>
-          </details>
-          <details>
-            <summary>Quanto tempo serve?</summary>
-            <p class="risposta">Vai al tuo ritmo. La guida ti accompagna nella tua prima lettura semplice, passo dopo passo, e ti propone un piano di pratica di 21 giorni per prendere confidenza.</p>
-          </details>
-          <details>
-            <summary>Devo comprare un mazzo?</summary>
-            <p class="risposta">No: il mazzo completo di 78 carte è incluso, da stampare a casa o in copisteria. Se hai già un mazzo di 78 carte, puoi usare anche il tuo.</p>
-          </details>
-          <details>
-            <summary>Posso usare un altro mazzo che ho già?</summary>
-            <p class="risposta">Sì, se è un mazzo da 78 carte con Arcani Maggiori e Minori: semi, numeri e figure funzionano allo stesso modo. Le immagini di riferimento della guida sono quelle del mazzo incluso (le illustrazioni originali del 1909 di Pamela Colman Smith, con i nomi in italiano), quindi con altri mazzi (per esempio i marsigliesi) qualche dettaglio può cambiare.</p>
-          </details>
-          <details>
-            <summary>Posso fare le carte a me stessa/o?</summary>
-            <p class="risposta">Sì. Il metodo funziona per le tue domande e per esercitarti con amici e familiari.</p>
-          </details>
-          <details>
-            <summary>I tarocchi prevedono il futuro?</summary>
-            <p class="risposta">Questa guida non promette previsioni. Ti insegna a leggere i simboli delle carte e a usarli come strumento di riflessione e conoscenza di sé.</p>
-          </details>
-          <details>
-            <summary>È un corso o un ebook?</summary>
-            <p class="risposta">È un ebook pratico in PDF, con esercizi e materiali da stampare. Nessun video, nessun abbonamento.</p>
-          </details>
-          <details>
-            <summary>Come lo ricevo e per quanto tempo?</summary>
-            <p class="risposta">Subito dopo il pagamento ricevi l'accesso via email. Il PDF è tuo: lo scarichi e lo rileggi quando vuoi.</p>
-          </details>
-          <details>
-            <summary>E se non fa per me?</summary>
-            <p class="risposta">Hai la garanzia di 15 giorni: scrivici e ti rimborsiamo.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4.13 Offerta ripetuta / CTA finale (copy v1.4). Prezzo: 19,90 € (IVA inclusa). -->
-    <section class="offerta offerta-ripetuta" aria-label="Offerta">
-      <p class="fascia">Il mazzo ha una mappa. È ora di vederla.</p>
-      <div class="prezzi">
-        <p class="prezzo-note">Ebook <em>L'Arte dei Tarocchi — Guida pratica per principianti</em> (65 pagine) + Bonus Stella: mazzo di 78 carte da stampare + 5 bonus</p>
-        <div class="prezzo-box">
-          <!-- Stesso prezzo del blocco principale: 19,90 € (IVA inclusa). Nessun prezzo barrato. -->
-          <span class="prezzo">19,90 €</span>
-        </div>
-        <p class="prezzo-note">(IVA inclusa) · pagamento unico, nessun abbonamento</p>
-      </div>
-      <div class="cta-wrap">
-        <!-- {{CHECKOUT_URL}} : sostituire l'href di test qui sotto con l'URL reale del checkout Hotmart. -->
-        <a class="cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Scarica L'Arte dei Tarocchi: 19,90 €</a>
-      </div>
-      <div class="cta-micro">
-        <p>Pagamento sicuro · PDF scaricabile subito · Garanzia 15 giorni</p>
-        <p>19,90 € · Accesso immediato · Garanzia 15 giorni</p>
-        <p class="cta-invito">Ordina entro mezzanotte e fai la tua prima stesa oggi stesso.</p>
-      </div>
-    </section>
   </main>
 
-  <!-- Footer: dati legali ancora placeholder. Disclaimer dalla copy 4.13. -->
+  <div class="stripe" aria-hidden="true"></div>
   <footer>
     <div class="wrap">
       <nav class="footer-links" aria-label="Note legali">
@@ -1247,18 +746,23 @@
         <a href="{{URL_PRIVACY}}">Privacy</a>
         <a href="{{URL_RIMBORSI}}">Rimborsi</a>
       </nav>
-      <div class="footer-meta">
-        <p class="footer-brand">L'Arte dei Tarocchi — Guida pratica per principianti</p>
-        <p>{{COPYRIGHT}}</p>
-        <p>{{RAGIONE_SOCIALE}}</p>
-        <p>{{INDIRIZZO}}</p>
-        <p><a href="mailto:{{EMAIL_CONTATTO}}">{{EMAIL_CONTATTO}}</a></p>
-        <p class="disclaimer">I contenuti hanno finalità educative e di intrattenimento e non sostituiscono il parere di professionisti (medici, psicologi, consulenti legali o finanziari).</p>
-      </div>
+      <p class="footer-brand">L'Arte dei Tarocchi — Guida pratica per principianti</p>
+      <p>{{COPYRIGHT}}</p>
+      <p>{{RAGIONE_SOCIALE}}</p>
+      <p>{{INDIRIZZO}}</p>
+      <p><a href="mailto:{{EMAIL_CONTATTO}}">{{EMAIL_CONTATTO}}</a></p>
+      <p class="disclaimer">I contenuti hanno finalità educative e di intrattenimento e non sostituiscono il parere di professionisti (medici, psicologi, consulenti legali o finanziari).</p>
     </div>
   </footer>
 
-<script>
+  <div class="sticky" id="sticky">
+    <div class="p">19,90 €<small>Accesso immediato · Garanzia 15 giorni</small></div>
+    <!-- {CHECKOUT_URL} -->
+    <a class="btn cta" href="https://pay.hotmart.com/C108473875O?off=a61961vv">Voglio iniziare: 19,90 €</a>
+  </div>
+
+  <script>
+
   (function () {
     /* ------------------------------------------------------------------
        Countdown giornaliero fino alla prossima mezzanotte in Europe/Rome.
@@ -1432,6 +936,26 @@
       a.setAttribute("href", appendParams(a.getAttribute("href") || "", applied));
     }, true);
   })();
+
+
+    /* Barra sticky in basso: compare quando il primo CTA esce dal viewport. */
+    (function () {
+      var bar = document.getElementById("sticky");
+      var hero = document.querySelector(".hero");
+      if (!bar) return;
+      if (!hero || !("IntersectionObserver" in window)) {
+        bar.classList.add("show");
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.intersectionRatio < 0.2) bar.classList.add("show");
+          else bar.classList.remove("show");
+        });
+      }, { threshold: [0, 0.2, 0.4] });
+      io.observe(hero);
+    })();
+
   </script>
 </body>
 </html>
